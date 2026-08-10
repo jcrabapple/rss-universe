@@ -1,0 +1,2 @@
+# here.now local state — never commit credentials or site state
+.herenow/

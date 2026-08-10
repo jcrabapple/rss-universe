@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The RSS Universe — Readers, Tools & Standards</title>
+<meta name="description" content="A living directory of RSS readers, feed generators, monitoring tools, directories, and standards. Every link verified live.">
+<style>
+  :root {
+    --bg: #faf6ef;
+    --bg-soft: #f3ecdf;
+    --card: #fffdf9;
+    --ink: #2b211a;
+    --ink-soft: #6b5d4f;
+    --accent: #e8590c;
+    --accent-deep: #c2450a;
+    --accent-soft: #fbe3d3;
+    --line: #e9decc;
+    --chip-os: #2f7d4f;
+    --chip-os-bg: #e3f0e6;
+    --chip-free: #33547e;
+    --chip-free-bg: #e3ebf5;
+    --chip-paid: #7a5a1f;
+    --chip-paid-bg: #f4ead1;
+    --chip-saas: #5c4a8a;
+    --chip-saas-bg: #eae5f4;
+    --shadow: 0 1px 2px rgba(43,33,26,.05), 0 4px 16px rgba(43,33,26,.05);
+  }
+  [data-theme="dark"] {
+    --bg: #171310;
+    --bg-soft: #1e1915;
+    --card: #221c17;
+    --ink: #f1e9dd;
+    --ink-soft: #b3a494;
+    --accent: #ff7a3d;
+    --accent-deep: #ff8f5a;
+    --accent-soft: #3a2417;
+    --line: #33291f;
+    --chip-os: #7fd6a0;
+    --chip-os-bg: #1d3325;
+    --chip-free: #93b4e8;
+    --chip-free-bg: #1d2836;
+    --chip-paid: #e3c27a;
+    --chip-paid-bg: #33291a;
+    --chip-saas: #b9a6e8;
+    --chip-saas-bg: #272038;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.3);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+    transition: background .25s ease, color .25s ease;
+  }
+  .serif { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif; }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    max-width: 1120px; margin: 0 auto; padding: .7rem 1.4rem;
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: .55rem; font-weight: 700; font-size: 1.02rem; letter-spacing: .01em; }
+  .brand svg { width: 24px; height: 24px; }
+  nav.topnav { display: flex; flex-wrap: wrap; gap: .15rem .35rem; margin-left: auto; }
+  nav.topnav a {
+    color: var(--ink-soft); text-decoration: none; font-size: .82rem;
+    padding: .3rem .6rem; border-radius: 999px; transition: background .15s, color .15s;
+  }
+  nav.topnav a:hover { color: var(--accent); background: var(--accent-soft); }
+  .theme-toggle {
+    background: none; border: 1px solid var(--line); color: var(--ink-soft);
+    border-radius: 999px; padding: .3rem .7rem; font-size: .82rem; cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ---------- Hero ---------- */
+  .hero { max-width: 1120px; margin: 0 auto; padding: 4.2rem 1.4rem 2.6rem; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: .45rem;
+    background: var(--accent-soft); color: var(--accent-deep);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    padding: .35rem .8rem; border-radius: 999px; margin-bottom: 1.4rem;
+  }
+  .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5.5vw, 4rem); line-height: 1.08; letter-spacing: -.02em;
+    max-width: 16ch; margin-bottom: 1.1rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p.lede { font-size: 1.13rem; color: var(--ink-soft); max-width: 62ch; margin-bottom: 2rem; }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: .7rem; }
+  .stat {
+    display: flex; align-items: baseline; gap: .5rem;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: .7rem 1.1rem; box-shadow: var(--shadow);
+  }
+  .stat b { font-size: 1.35rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .84rem; color: var(--ink-soft); }
+
+  /* ---------- Sections ---------- */
+  main { max-width: 1120px; margin: 0 auto; padding: 0 1.4rem 3rem; }
+  section { margin-top: 3.4rem; scroll-margin-top: 80px; }
+  .sec-head { display: flex; align-items: baseline; gap: .9rem; margin-bottom: 1.2rem; border-bottom: 2px solid var(--line); padding-bottom: .6rem; }
+  .sec-num {
+    font-family: Georgia, serif; font-style: italic; font-size: 1.5rem; color: var(--accent);
+    min-width: 2.2rem;
+  }
+  .sec-head h2 { font-size: 1.55rem; letter-spacing: -.01em; }
+  .sec-head .blurb { margin-left: auto; color: var(--ink-soft); font-size: .88rem; max-width: 34ch; text-align: right; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: .9rem; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.05rem 1.15rem; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: .45rem;
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 6px 24px rgba(43,33,26,.08); }
+  .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .6rem; }
+  .card h3 { font-size: 1.06rem; letter-spacing: -.005em; line-height: 1.25; }
+  .card h3 a { color: inherit; text-decoration: none; }
+  .card h3 a:hover { color: var(--accent); }
+  .card p { font-size: .9rem; color: var(--ink-soft); flex-grow: 1; }
+  .card-meta { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .chip {
+    font-size: .68rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+    padding: .18rem .5rem; border-radius: 999px;
+  }
+  .chip.os  { color: var(--chip-os);  background: var(--chip-os-bg); }
+  .chip.free{ color: var(--chip-free);background: var(--chip-free-bg); }
+  .chip.paid{ color: var(--chip-paid);background: var(--chip-paid-bg); }
+  .chip.saas{ color: var(--chip-saas);background: var(--chip-saas-bg); }
+  .card .url { font-size: .76rem; color: var(--ink-soft); opacity: .75; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; word-break: break-all; }
+
+  /* ---------- Callout ---------- */
+  .callout {
+    margin-top: 3.4rem;
+    background: linear-gradient(135deg, var(--accent-soft), var(--card));
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-radius: 18px; padding: 1.6rem 1.8rem;
+  }
+  .callout h2 { font-size: 1.35rem; margin-bottom: .5rem; }
+  .callout p { color: var(--ink-soft); font-size: .98rem; max-width: 68ch; }
+  .callout code {
+    background: color-mix(in srgb, var(--ink) 8%, transparent); border: 1px solid var(--line);
+    border-radius: 6px; padding: .1rem .35rem; font-size: .88rem;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--line); margin-top: 3.4rem;
+    padding: 2.2rem 1.4rem 3rem; text-align: center; color: var(--ink-soft); font-size: .88rem;
+  }
+  footer .rss-mark { margin-bottom: .8rem; }
+  footer p + p { margin-top: .35rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 720px) {
+    .sec-head { flex-wrap: wrap; }
+    .sec-head .blurb { margin-left: 0; text-align: left; max-width: none; }
+    .grid { grid-template-columns: 1fr; }
+    nav.topnav { margin-left: 0; width: 100%; order: 3; }
+    .hero { padding-top: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 15a4 4 0 0 1 4 4H5v-4Z" fill="#e8590c"/>
+        <path d="M5 9.5a9.5 9.5 0 0 1 9.5 9.5h-3.3A6.2 6.2 0 0 0 5 12.8V9.5Z" fill="#e8590c"/>
+        <path d="M5 4a15 15 0 0 1 15 15h-3.1A11.9 11.9 0 0 0 5 7.1V4Z" fill="#e8590c"/>
+        <circle cx="6.4" cy="17.6" r="1.6" fill="#e8590c"/>
+      </svg>
+      The RSS Universe
+    </div>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#web">Web readers</a>
+      <a href="#selfhost">Self-hosted</a>
+      <a href="#desktop">Desktop &amp; mobile</a>
+      <a href="#podcast">Podcasts</a>
+      <a href="#generate">Generation</a>
+      <a href="#monitor">Monitoring</a>
+      <a href="#discover">Discovery</a>
+      <a href="#standards">Standards</a>
+      <a href="#dev">Dev tools</a>
+      <a href="#extensions">Extensions</a>
+      <a href="#lists">Lists</a>
+      <a href="#readlater">Read-later</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">Dark</button>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-badge"><span class="dot"></span> Living directory &middot; updated Aug 10, 2026</div>
+  <h1 class="serif">RSS isn't dead. It's <em>the</em> resistance.</h1>
+  <p class="lede">No algorithm, no timeline, no engagement bait. Just feeds you chose. Here's the whole ecosystem — readers, feed generators, monitoring, directories, and the standards that hold it together.</p>
+  <div class="hero-stats">
+    <div class="stat"><b>80</b><span>apps &amp; tools</span></div>
+    <div class="stat"><b>12</b><span>categories</span></div>
+    <div class="stat"><b>100%</b><span>links verified live</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section id="web">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="serif">Web &amp; hosted readers</h2><span class="blurb">Nothing to install — read in the browser, sync everywhere.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://feedly.com/" target="_blank" rel="noopener">Feedly</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free tier</span></div></div><p>The biggest hosted reader. Clean, fast, and AI-assisted (Leo) for monitoring and research. Free up to 100 sources.</p><span class="url">feedly.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.inoreader.com/" target="_blank" rel="noopener">Inoreader</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free tier</span></div></div><p>The power-user pick: rules, keyword alerts, global full-text search, and newsletter-to-RSS. Free tier supports up to 150 sources.</p><span class="url">inoreader.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://newsblur.com/" target="_blank" rel="noopener">NewsBlur</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>Hosted reader with social layers: train your feed with a learning filter, share stories, and read the original site view.</p><span class="url">newsblur.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://feedbin.com/" target="_blank" rel="noopener">Feedbin</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip paid">paid</span></div></div><p>A fast, calm, well-designed paid reader ($5/mo). Bonus: it mints an email address that turns newsletters into RSS.</p><span class="url">feedbin.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://bazqux.com/" target="_blank" rel="noopener">BazQux</a></h3><div class="card-meta"><span class="chip paid">paid</span></div></div><p>Quiet, fast, reliable hosted reader with RSS/Atom/JSON feed support, comments, and full-text extraction.</p><span class="url">bazqux.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://theoldreader.com/" target="_blank" rel="noopener">The Old Reader</a></h3><div class="card-meta"><span class="chip free">free tier</span></div></div><p>Google Reader's spiritual heir: folders, star, share, and a social following model without the algorithm.</p><span class="url">theoldreader.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://readwise.io/read" target="_blank" rel="noopener">Readwise Reader</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip paid">paid</span></div></div><p>Read-later and RSS in one app, with serious highlighting, search, and AI note-taking on top of your feeds.</p><span class="url">readwise.io/read</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://folo.is/" target="_blank" rel="noopener">Folo</a></h3><div class="card-meta"><span class="chip paid">paid</span></div></div><p>AI-native reader from the RSSNext crew, built to pair with RSSHub. Roughly $1/mo — an "info aquarium" of one stream.</p><span class="url">folo.is</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.commafeed.com/" target="_blank" rel="noopener">CommaFeed</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free tier</span></div></div><p>Lightweight Google Reader-style reader — use the hosted instance or run it yourself with Docker.</p><span class="url">commafeed.com</span></article>
+    </div>
+  </section>
+
+  <section id="selfhost">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="serif">Self-hosted readers</h2><span class="blurb">Your feeds, your server, your data.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://miniflux.app/" target="_blank" rel="noopener">Miniflux</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>The minimalist's dream: a single Go binary + PostgreSQL, text-first UI, Fever and Google Reader APIs for mobile clients. Sips ~100MB RAM.</p><span class="url">miniflux.app</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://freshrss.org/" target="_blank" rel="noopener">FreshRSS</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>The most popular PHP self-hosted reader: categories, tags, filters, stats, webhooks, extensions, and multi-protocol APIs.</p><span class="url">freshrss.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://tt-rss.org/" target="_blank" rel="noopener">Tiny Tiny RSS</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>The veteran PHP reader with a plugin system and dedicated mobile clients. A settled workflow for seasoned self-hosters.</p><span class="url">tt-rss.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/nkanaev/yarr" target="_blank" rel="noopener">Yarr</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>"Yet another rss reader": one binary, embedded SQLite, zero fuss. Runs as a tray app or headless over the browser. Fever API included.</p><span class="url">github.com/nkanaev/yarr</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/0x2e/fusion" target="_blank" rel="noopener">Fusion</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Yarr's younger, prettier sibling — Go + TypeScript, proper PWA, Fever API. Deliberately ships zero AI features.</p><span class="url">github.com/0x2e/fusion</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://selfoss.aditu.de/" target="_blank" rel="noopener">Selfoss</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>A "multipurpose" PHP reader: RSS, live streams, and mashups in one self-hosted web app.</p><span class="url">selfoss.aditu.de</span></article>
+    </div>
+  </section>
+
+  <section id="desktop">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="serif">Desktop &amp; mobile readers</h2><span class="blurb">Native apps for the devices you actually carry.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://netnewswire.com/" target="_blank" rel="noopener">NetNewsWire</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>The gold standard free Apple reader (Mac/iOS). iCloud sync or connect Feedbin, Feedly, Inoreader, FreshRSS and more.</p><span class="url">netnewswire.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://reederapp.com/" target="_blank" rel="noopener">Reeder</a></h3><div class="card-meta"><span class="chip paid">paid</span></div></div><p>The design benchmark on Mac/iOS. The new timeline-style app mixes RSS with podcasts, YouTube, Mastodon and Bluesky in one stream.</p><span class="url">reederapp.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.goldenhillsoftware.com/unread/" target="_blank" rel="noopener">Unread</a></h3><div class="card-meta"><span class="chip paid">freemium</span></div></div><p>Polished iOS and Mac reader with standout typography. Base app free; Premium adds article actions and custom icons.</p><span class="url">goldenhillsoftware.com/unread</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://lireapp.com/" target="_blank" rel="noopener">Lire</a></h3><div class="card-meta"><span class="chip paid">paid</span></div></div><p>iOS reader that excels at offline full-text: it fetches complete articles automatically, so your reading survives the subway.</p><span class="url">lireapp.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://apps.gnome.org/NewsFlash/" target="_blank" rel="noopener">NewsFlash</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>The GNOME desktop client for web readers: desktop notifications, fast search, keyboard shortcuts, sync through your service.</p><span class="url">apps.gnome.org/NewsFlash</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://hyliu.me/fluent-reader/" target="_blank" rel="noopener">Fluent Reader</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Cross-platform (Windows/macOS/Linux) Electron reader with a clean Fluent UI and full dark mode. Local or service sync.</p><span class="url">hyliu.me/fluent-reader</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://newsboat.org/" target="_blank" rel="noopener">Newsboat</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>The terminal reader, actively maintained fork of Newsbeuter. Also works as a client for NewsBlur, The Old Reader, FeedHQ and friends.</p><span class="url">newsboat.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/seazon/FeedMe" target="_blank" rel="noopener">FeedMe</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Android reader with an unusually long list of service backends, plus local and self-hosted options.</p><span class="url">github.com/seazon/FeedMe</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/Ashinch/ReadYou" target="_blank" rel="noopener">ReadYou</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Material You Android reader; syncs via Google Reader / Fever compatible APIs.</p><span class="url">github.com/Ashinch/ReadYou</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/jocmp/capyreader" target="_blank" rel="noopener">Capy Reader</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>A smallish, friendly Android reader for Feedbin, FreshRSS, Miniflux and local feeds. On F-Droid and Play, no ads.</p><span class="url">github.com/jocmp/capyreader</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/jangernert/FeedReader" target="_blank" rel="noopener">FeedReader</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Linux desktop reader that syncs with the usual services (Feedbin, TT-RSS, Nextcloud News, etc.).</p><span class="url">github.com/jangernert/FeedReader</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://vienna-rss.com/" target="_blank" rel="noopener">Vienna RSS</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>The long-running free native Mac reader, still quietly maintained.</p><span class="url">vienna-rss.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.thunderbird.net/" target="_blank" rel="noopener">Thunderbird</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Yes, the email client. Feeds are built in — a perfectly good reader for people who already live in their inbox.</p><span class="url">thunderbird.net</span></article>
+    </div>
+  </section>
+
+  <section id="podcast">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="serif">Podcast readers</h2><span class="blurb">Podcasts are RSS with audio enclosures — here's the open side.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://antennapod.org/" target="_blank" rel="noopener">AntennaPod</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Completely open Android podcast player. Subscribe to any RSS feed, download episodes, no account required.</p><span class="url">antennapod.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://podverse.fm/" target="_blank" rel="noopener">Podverse</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Open-source, ad-free, account-free podcast app with web, mobile and desktop versions.</p><span class="url">podverse.fm</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://gpodder.net/" target="_blank" rel="noopener">gPodder</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Open podcast client (Linux desktop + mobile) with sync through gpodder.net.</p><span class="url">gpodder.net</span></article>
+    </div>
+  </section>
+
+  <section id="generate">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="serif">Feed generation &amp; conversion</h2><span class="blurb">No feed? Make one. Newsletter trapped in email? Free it.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/DIYgod/RSSHub" target="_blank" rel="noopener">RSSHub</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>The world's largest RSS network: 5,000+ instances turning hundreds of platforms into feeds. "Everything is RSSible."</p><span class="url">github.com/DIYgod/RSSHub</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/RSS-Bridge/rss-bridge" target="_blank" rel="noopener">RSS-Bridge</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>PHP tool that generates feeds for sites that don't have them — 400+ bridges (YouTube, Mastodon, Telegram, Reddit and more).</p><span class="url">github.com/RSS-Bridge/rss-bridge</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://rss.app/" target="_blank" rel="noopener">RSS.app</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free tier</span></div></div><p>Commercial generator for any URL or social profile, plus widgets, Discord/Slack/Telegram bots and an API.</p><span class="url">rss.app</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://fetchrss.com/" target="_blank" rel="noopener">FetchRSS</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free tier</span></div></div><p>Visual RSS builder: point at a page, click the blocks you want, get a hosted feed URL. Also generates from social pages.</p><span class="url">fetchrss.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://kill-the-newsletter.com/" target="_blank" rel="noopener">Kill the Newsletter!</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Free, privacy-minded service: it hands you an email address, and every newsletter sent there becomes an Atom feed entry.</p><span class="url">kill-the-newsletter.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://newsfeed.email/" target="_blank" rel="noopener">newsfeed.email</a></h3><div class="card-meta"><span class="chip saas">SaaS</span></div></div><p>Newsletter-to-RSS service with a dedicated address per newsletter, so subscriptions stay out of your real inbox.</p><span class="url">newsfeed.email</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://emailtofeed.com/" target="_blank" rel="noopener">emailtofeed.com</a></h3><div class="card-meta"><span class="chip free">free</span></div></div><p>Free: get an address, every message it receives lands in an RSS feed. Keeps the 10 most recent emails, 30-day retention.</p><span class="url">emailtofeed.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://mailbrew.com/" target="_blank" rel="noopener">Mailbrew</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip paid">paid</span></div></div><p>Personal email digests: newsletters plus RSS feeds combined into one scheduled brew in your inbox.</p><span class="url">mailbrew.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/huginn/huginn" target="_blank" rel="noopener">Huginn</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Self-hosted automation agents that can watch, scrape, transform, and emit RSS feeds — your own private IFTTT.</p><span class="url">github.com/huginn/huginn</span></article>
+    </div>
+  </section>
+
+  <section id="monitor">
+    <div class="sec-head"><span class="sec-num">06</span><h2 class="serif">Monitoring &amp; alerts</h2><span class="blurb">Know the moment a page changes, a feed posts, or a price drops.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://changedetection.io/" target="_blank" rel="noopener">changedetection.io</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free tier</span></div></div><p>Watch pages, feeds and JSON for changes; alert across 85+ channels (Discord, Slack, Telegram, email…). Self-host or use the cloud.</p><span class="url">changedetection.io</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.distill.io/" target="_blank" rel="noopener">Distill</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip paid">paid</span></div></div><p>Commercial visual change monitoring: browser extension plus web app that watches any part of any page.</p><span class="url">distill.io</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://blogtrottr.com/" target="_blank" rel="noopener">Blogtrottr</a></h3><div class="card-meta"><span class="chip free">free tier</span></div></div><p>Feed-to-email with schedules, digests, filters and webhooks — plus a REST API for managing subscriptions programmatically.</p><span class="url">blogtrottr.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://ifttt.com/" target="_blank" rel="noopener">IFTTT</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free tier</span></div></div><p>The classic glue: new feed item triggers everything from email and notifications to smart home actions.</p><span class="url">ifttt.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://zapier.com/" target="_blank" rel="noopener">Zapier</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free tier</span></div></div><p>Automation platform with RSS triggers — push feed items into thousands of apps.</p><span class="url">zapier.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.dlvr.it/" target="_blank" rel="noopener">dlvr.it</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free tier</span></div></div><p>Auto-posts RSS feeds to social networks on a schedule — the feed-to-social pipe.</p><span class="url">dlvr.it</span></article>
+    </div>
+  </section>
+
+  <section id="discover">
+    <div class="sec-head"><span class="sec-num">07</span><h2 class="serif">Search &amp; discovery</h2><span class="blurb">Finding good feeds is half the battle.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://feedle.world/" target="_blank" rel="noopener">Feedle</a></h3><div class="card-meta"><span class="chip free">free</span></div></div><p>A search engine for blogs and podcasts — and every search itself is an RSS feed you can subscribe to.</p><span class="url">feedle.world</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://feedbagel.com/" target="_blank" rel="noopener">Feedbagel</a></h3><div class="card-meta"><span class="chip free">free</span></div></div><p>Big open directory: 11,000+ publishers, 61,000+ feeds, full-text searchable.</p><span class="url">feedbagel.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://feedspot.com/" target="_blank" rel="noopener">Feedspot</a></h3><div class="card-meta"><span class="chip free">free</span></div></div><p>Massive curated directory of blogs and podcasts by topic, with RSS links on every list.</p><span class="url">feedspot.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.blogarama.com/" target="_blank" rel="noopener">Blogarama</a></h3><div class="card-meta"><span class="chip free">free</span></div></div><p>One of the longest-running blog directories, still accepting submissions.</p><span class="url">blogarama.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.marginalia.nu/" target="_blank" rel="noopener">Marginalia</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Search engine that deliberately favors the small, independent, and interesting web — where RSS lives.</p><span class="url">marginalia.nu</span></article>
+    </div>
+  </section>
+
+  <section id="standards">
+    <div class="sec-head"><span class="sec-num">08</span><h2 class="serif">Standards &amp; formats</h2><span class="blurb">The boring stuff that makes everything else work.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://www.rssboard.org/rss-specification" target="_blank" rel="noopener">RSS 2.0 Specification</a></h3><div class="card-meta"><span class="chip free">spec</span></div></div><p>The canonical RSS 2.0 spec, maintained by the RSS Advisory Board.</p><span class="url">rssboard.org/rss-specification</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.rssboard.org/" target="_blank" rel="noopener">RSS Advisory Board</a></h3><div class="card-meta"><span class="chip free">org</span></div></div><p>The org that maintains RSS 2.0, plus a feed validator and assorted tools.</p><span class="url">rssboard.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://validator.w3.org/feed/" target="_blank" rel="noopener">W3C Feed Validator</a></h3><div class="card-meta"><span class="chip free">tool</span></div></div><p>Validate your RSS and Atom feeds before you ship them to the world.</p><span class="url">validator.w3.org/feed</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.jsonfeed.org/" target="_blank" rel="noopener">JSON Feed</a></h3><div class="card-meta"><span class="chip free">spec</span></div></div><p>The JSON syndication format (v1.1) from Manton Reece and Brent Simmons — same idea as RSS, no XML.</p><span class="url">jsonfeed.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://validator.jsonfeed.org/" target="_blank" rel="noopener">JSON Feed Validator</a></h3><div class="card-meta"><span class="chip free">tool</span></div></div><p>Check a JSON Feed document against the spec.</p><span class="url">validator.jsonfeed.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://opml.org/" target="_blank" rel="noopener">OPML</a></h3><div class="card-meta"><span class="chip free">spec</span></div></div><p>The outline format every reader uses to import/export subscriptions. Your feeds, portable.</p><span class="url">opml.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://www.w3.org/TR/websub/" target="_blank" rel="noopener">WebSub</a></h3><div class="card-meta"><span class="chip free">spec</span></div></div><p>The W3C standard for real-time feed push: hubs ping subscribers the instant something publishes.</p><span class="url">w3.org/TR/websub</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://datatracker.ietf.org/doc/html/rfc4287" target="_blank" rel="noopener">Atom (RFC 4287)</a></h3><div class="card-meta"><span class="chip free">spec</span></div></div><p>The Atom Syndication Format — the more rigorously specified cousin of RSS.</p><span class="url">datatracker.ietf.org/doc/html/rfc4287</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://podcasting2.org/" target="_blank" rel="noopener">Podcasting 2.0</a></h3><div class="card-meta"><span class="chip free">spec</span></div></div><p>An open RSS namespace extending feeds for transcripts, chapters, funding, and more — backwards compatible.</p><span class="url">podcasting2.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://podcastindex.org/" target="_blank" rel="noopener">Podcast Index</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>The open, free podcast feed index and search API — podcasting without the platform.</p><span class="url">podcastindex.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/Podcastindex-org/podcast-namespace" target="_blank" rel="noopener">Podcast namespace repo</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>The <code>&lt;podcast:&gt;</code> namespace spec, released to the public domain (CC0).</p><span class="url">github.com/Podcastindex-org/podcast-namespace</span></article>
+    </div>
+  </section>
+
+  <section id="dev">
+    <div class="sec-head"><span class="sec-num">09</span><h2 class="serif">Libraries, APIs &amp; dev tools</h2><span class="blurb">For when you want to build on the feed itself.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="noopener">feedparser</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>The Python universal feed parser — RSS 0.9x/1.0/2.0, Atom 0.3/1.0, RDF. The standard answer.</p><span class="url">github.com/kurtmckee/feedparser</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://simplepie.org/" target="_blank" rel="noopener">SimplePie</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>The PHP feed parser that put the "simple" back in RSS.</p><span class="url">simplepie.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/lkiesow/python-feedgen" target="_blank" rel="noopener">python-feedgen</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>Generate Atom and RSS 2.0 feeds from Python.</p><span class="url">github.com/lkiesow/python-feedgen</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/feedbin/feedbin" target="_blank" rel="noopener">Feedbin (source)</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>The full Feedbin Rails app, open source — run the whole thing yourself if you want.</p><span class="url">github.com/feedbin/feedbin</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://rss2json.com/" target="_blank" rel="noopener">rss2json</a></h3><div class="card-meta"><span class="chip free">free tier</span></div></div><p>Free API that converts any feed to JSON — handy for embedding feeds in JavaScript.</p><span class="url">rss2json.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://rss.app/docs/api/feeds" target="_blank" rel="noopener">RSS.app API</a></h3><div class="card-meta"><span class="chip saas">SaaS</span></div></div><p>REST API to create, list and delete feeds programmatically from any URL.</p><span class="url">rss.app/docs/api/feeds</span></article>
+    </div>
+  </section>
+
+  <section id="extensions">
+    <div class="sec-head"><span class="sec-num">10</span><h2 class="serif">Browser extensions</h2><span class="blurb">Feeds found without leaving the page.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/DIYgod/RSSHub-Radar" target="_blank" rel="noopener">RSSHub Radar</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>Browser extension that detects RSS feeds — and RSSHub routes — on any site you visit.</p><span class="url">github.com/DIYgod/RSSHub-Radar</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/Cay-Zhang/RSSBud" target="_blank" rel="noopener">RSSBud</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>RSSHub Radar for iOS, built on the Shortcuts app.</p><span class="url">github.com/Cay-Zhang/RSSBud</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/LeetaoGoooo/RSSAid" target="_blank" rel="noopener">RSSAid</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>RSSHub Radar for Android, built with Flutter.</p><span class="url">github.com/LeetaoGoooo/RSSAid</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://nodetics.com/feedbro/" target="_blank" rel="noopener">Feedbro</a></h3><div class="card-meta"><span class="chip free">free</span></div></div><p>A full feed reader that lives in your browser (Chrome, Firefox, Edge, Vivaldi), with a built-in rule engine and social integrations.</p><span class="url">nodetics.com/feedbro</span></article>
+    </div>
+  </section>
+
+  <section id="lists">
+    <div class="sec-head"><span class="sec-num">11</span><h2 class="serif">Curated lists &amp; directories</h2><span class="blurb">Other people did the collecting. Steal it.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/voidfiles/awesome-rss" target="_blank" rel="noopener">Awesome RSS</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>The classic curated list of RSS/Atom/syndication links: readers, libraries, formats.</p><span class="url">github.com/voidfiles/awesome-rss</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/aboutrss/all-about-rss" target="_blank" rel="noopener">ALL about RSS</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>A massive, community-maintained index of RSS tools, services and feed sources, kept alive by a Telegram community.</p><span class="url">github.com/aboutrss/all-about-rss</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/xiangyugongzuoliu/awesome-rss-feeds-list" target="_blank" rel="noopener">awesome-rss-feeds-list</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>2,000+ curated, HTTP-validated feeds across 30 categories, with ready-to-import OPML files.</p><span class="url">github.com/xiangyugongzuoliu/awesome-rss-feeds-list</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/plenaryapp/awesome-rss-feeds" target="_blank" rel="noopener">awesome-rss-feeds (Plenary)</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>~500 recommended feeds plus 250+ news sources across countries, all in OPML.</p><span class="url">github.com/plenaryapp/awesome-rss-feeds</span></article>
+    </div>
+  </section>
+
+  <section id="readlater">
+    <div class="sec-head"><span class="sec-num">12</span><h2 class="serif">Read-it-later</h2><span class="blurb">Pocket is sunsetting — these are the places to land.</span></div>
+    <div class="grid">
+      <article class="card"><div class="card-head"><h3><a href="https://www.instapaper.com/" target="_blank" rel="noopener">Instapaper</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free tier</span></div></div><p>The original read-later service, still going. Save articles, read offline, highlight.</p><span class="url">instapaper.com</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://wallabag.org/" target="_blank" rel="noopener">Wallabag</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Self-hosted read-it-later: your articles, your server, your data.</p><span class="url">wallabag.org</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://github.com/karakeep-app/karakeep" target="_blank" rel="noopener">Karakeep</a></h3><div class="card-meta"><span class="chip os">open source</span></div></div><p>Open-source bookmarking + read-later (formerly Hoarder) with auto-tagging and full-text search.</p><span class="url">github.com/karakeep-app/karakeep</span></article>
+      <article class="card"><div class="card-head"><h3><a href="https://readwise.io/read" target="_blank" rel="noopener">Readwise Reader</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip paid">paid</span></div></div><p>The read-later with the best tooling on top — listed again because it really is the RSS + saving combo.</p><span class="url">readwise.io/read</span></article>
+    </div>
+  </section>
+
+  <aside class="callout">
+    <h2 class="serif">Switching readers? It's painless.</h2>
+    <p>Every serious reader imports and exports <code>OPML</code> — the one file format that carries all your subscriptions. Export from your current app, import into the next, done in under a minute. Don't let sunk cost keep you in a reader you don't like.</p>
+  </aside>
+
+</main>
+
+<footer>
+  <div class="rss-mark">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true">
+      <path d="M5 15a4 4 0 0 1 4 4H5v-4Z" fill="#e8590c"/>
+      <path d="M5 9.5a9.5 9.5 0 0 1 9.5 9.5h-3.3A6.2 6.2 0 0 0 5 12.8V9.5Z" fill="#e8590c"/>
+      <path d="M5 4a15 15 0 0 1 15 15h-3.1A11.9 11.9 0 0 0 5 7.1V4Z" fill="#e8590c"/>
+      <circle cx="6.4" cy="17.6" r="1.6" fill="#e8590c"/>
+    </svg>
+  </div>
+  <p>The RSS Universe — 80 apps, tools and standards, every link checked live on August 10, 2026.</p>
+  <p>Built by Damien. RSS is the oldest social network that never sold your data.</p>
+</footer>
+
+<script>
+  (function () {
+    var t = document.getElementById('themeToggle');
+    var root = document.documentElement;
+    var saved = null;
+    try { saved = localStorage.getItem('rss-theme'); } catch (e) {}
+    if (saved === 'dark') root.setAttribute('data-theme', 'dark');
+    function label() {
+      t.textContent = root.getAttribute('data-theme') === 'dark' ? 'Light' : 'Dark';
+    }
+    label();
+    t.addEventListener('click', function () {
+      var dark = root.getAttribute('data-theme') === 'dark';
+      if (dark) root.removeAttribute('data-theme'); else root.setAttribute('data-theme', 'dark');
+      try { localStorage.setItem('rss-theme', dark ? 'light' : 'dark'); } catch (e) {}
+      label();
+    });
+  })();
+</script>
+</body>
+</html>
