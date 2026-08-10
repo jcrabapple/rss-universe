@@ -157,6 +157,17 @@
     background: color-mix(in srgb, var(--ink) 8%, transparent); border: 1px solid var(--line);
     border-radius: 6px; padding: .1rem .35rem; font-size: .88rem;
   }
+  .callout.cta { background: var(--card); border-color: var(--accent); }
+  .cta-row { margin-top: 1.1rem; }
+  .btn {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    font-weight: 700; font-size: .95rem; text-decoration: none;
+    padding: .7rem 1.4rem; border-radius: 12px;
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn:hover { background: var(--accent-deep); transform: translateY(-1px); }
 
   /* ---------- Footer ---------- */
   footer {
@@ -377,6 +388,12 @@
     <p>Every serious reader imports and exports <code>OPML</code> — the one file format that carries all your subscriptions. Export from your current app, import into the next, done in under a minute. Don't let sunk cost keep you in a reader you don't like.</p>
   </aside>
 
+  <aside class="callout cta">
+    <h2 class="serif">Found a tool we missed?</h2>
+    <p>If you know an RSS reader, generator, service, or standard that belongs on this page, open an issue on GitHub and we'll check it out.</p>
+    <p class="cta-row"><a class="btn" href="https://github.com/jcrabapple/rss-universe/issues/new" target="_blank" rel="noopener">Suggest a link on GitHub</a></p>
+  </aside>
+
 </main>
 
 <footer>
@@ -390,6 +407,7 @@
   </div>
   <p>The RSS Universe — 80 apps, tools and standards, every link checked live on August 10, 2026.</p>
   <p>Built by Damien. RSS is the oldest social network that never sold your data.</p>
+  <p><a href="https://github.com/jcrabapple/rss-universe/issues/new" target="_blank" rel="noopener">Suggest a link on GitHub</a></p>
 </footer>
 
 <script>
