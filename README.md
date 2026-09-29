@@ -8,7 +8,7 @@ Live at: **https://toolbox.rss.here.now/**
 
 A single self-contained `index.html` — no build step, no dependencies, no external assets. Warm cream-and-orange editorial theme with a dark mode toggle (preference persisted in `localStorage`).
 
-- **104 apps & tools** across 13 categories: web/hosted readers, self-hosted readers, desktop & mobile readers, podcast readers, feed generation, monitoring & alerts, social cross-posting, search & discovery, standards & formats, dev libraries, browser extensions, curated lists, and read-it-later
+- **105 apps & tools** across 13 categories: web/hosted readers, self-hosted readers, desktop & mobile readers, podcast readers, feed generation, monitoring & alerts, social cross-posting, search & discovery, standards & formats, dev libraries, browser extensions, curated lists, and read-it-later
 - All external links open in new tabs
 - Every candidate link was HTTP-checked during research; dead links were dropped or corrected before publishing
 
