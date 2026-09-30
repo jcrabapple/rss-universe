@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>The RSS Universe — Changelog</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>New apps, tools, and standards added to the RSS Universe directory.</description>
+<language>en</language>
+<atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
+<lastBuildDate>Tue, 29 Sep 2026 13:11:06 -0400</lastBuildDate>
+<item>
+<title>Added: MastoFeed, RSS Parrot.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: MastoFeed, RSS Parrot&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add MastoFeed and RSS Parrot (issue #8)&lt;/p&gt;</description>
+<pubDate>Tue, 29 Sep 2026 13:11:06 -0400</pubDate>
+<guid isPermaLink="false">b2f188ed5919fb0743b47d170178361ab05fcccf</guid>
+</item>
+<item>
+<title>Added: simple feed reader.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: simple feed reader&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add simple feed reader (issue #3); 104 cards&lt;/p&gt;</description>
+<pubDate>Mon, 28 Sep 2026 13:11:48 -0400</pubDate>
+<guid isPermaLink="false">f71caae98dd82776c359007514ba4d06433f103c</guid>
+</item>
+<item>
+<title>Added: ReactFlux, Read You, Readeck.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: ReactFlux, Read You, Readeck&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add ReactFlux, Read You, Readeck (issues #4, #5, #6); 103 cards, Sep 28 sweep&lt;/p&gt;</description>
+<pubDate>Mon, 28 Sep 2026 13:04:04 -0400</pubDate>
+<guid isPermaLink="false">b31c93dfca286f23ba8594c79915fdb65d63d41d</guid>
+</item>
+<item>
+<title>Added: Tapestry.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: Tapestry&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add Tapestry (Iconfactory) to desktop &amp;amp; mobile readers; count 100&lt;/p&gt;</description>
+<pubDate>Mon, 28 Sep 2026 08:18:21 -0400</pubDate>
+<guid isPermaLink="false">243ddc2a85630dc42b8c276b8b3f8b34b2673a16</guid>
+</item>
+<item>
+<title>Added 10 links.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added 10 links&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add 10 new apps/tools from Sept 2026 research, update Unread card, refresh counts/date&lt;/p&gt;</description>
+<pubDate>Sun, 27 Sep 2026 19:28:54 -0400</pubDate>
+<guid isPermaLink="false">938c9cd2235aa6033c3f8d321af04cca34c70496</guid>
+</item>
+<item>
+<title>Added 9 links.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added 9 links&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add 9 new entries (Current, Glanced, Syndicator, FeedFerret, Nosey, Feedsweep, Feedletter, FeedEcho OSS + Hosted) and new Social cross-posting section&lt;/p&gt;</description>
+<pubDate>Fri, 28 Aug 2026 20:45:07 -0400</pubDate>
+<guid isPermaLink="false">2ff08a7aa0658959c9ce6c1055876d776d993524</guid>
+</item>
+<item>
+<title>Added 79 links.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added 79 links&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — The RSS Universe: RSS apps, tools, and standards directory&lt;/p&gt;</description>
+<pubDate>Mon, 10 Aug 2026 11:16:57 -0400</pubDate>
+<guid isPermaLink="false">b8a12ace55510b6b70e12cc9a308df772b595f03</guid>
+</item>
+</channel>
+</rss>
