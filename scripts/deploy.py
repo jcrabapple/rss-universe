@@ -10,12 +10,15 @@ import hashlib
 import json
 import sys
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 BASE = "https://here.now"
 CLIENT = "hermes/rss-universe-deploy"
+# The rss workspace (org) owns the site; the label toolbox.rss.here.now maps to it.
+ORG_ACCOUNT_ID = "7b096eba-974b-4876-9077-d0445e04d91c"
 
 FILES = [
     ("index.html", "text/html; charset=utf-8"),
@@ -36,10 +39,11 @@ def req(method: str, url: str, *, headers: dict | None = None,
     return urllib.request.urlopen(r, timeout=timeout)
 
 
-def api(method: str, path: str, body: dict | None = None):
+def api(method: str, path: str, body: dict | None = None, extra: dict | None = None):
     headers = {
         "Authorization": f"Bearer {token()}",
         "Content-Type": "application/json",
+        **(extra or {}),
     }
     data = json.dumps(body).encode() if body is not None else None
     with req(method, BASE + path, headers=headers, data=data) as resp:
@@ -48,9 +52,12 @@ def api(method: str, path: str, body: dict | None = None):
 
 def main() -> None:
     acct = api("GET", "/api/v1/accounts")
-    account_id = next(a["id"] for a in acct["accounts"] if a.get("type") == "org")
+    org = next(a["accountId"] for a in acct["accounts"]
+               if a["accountId"] == ORG_ACCOUNT_ID and a.get("type") == "org")
 
-    pubs = api("GET", "/api/v1/publishes")
+    ws_headers = {"X-HereNow-Account": org}
+    pubs = api("GET", "/api/v1/publishes", extra=ws_headers)
+    assert len(pubs["publishes"]) == 1, f"expected 1 publish in workspace, got {len(pubs['publishes'])}"
     slug = pubs["publishes"][0]["slug"]
     print(f"deploying to slug: {slug}")
 
@@ -60,13 +67,13 @@ def main() -> None:
         file_specs.append((name, ctype, data, hashlib.sha256(data).hexdigest(), len(data)))
 
     headers = {"Authorization": f"Bearer {token()}",
-               "X-HereNow-Account": account_id,
+               "X-HereNow-Account": org,
                "Content-Type": "application/json"}
     body = {"files": [
         {"path": n, "size": sz, "contentType": ct, "hash": h}
         for n, ct, _, h, sz in file_specs
     ]}
-    upd = api("PUT", f"/api/v1/publish/{slug}", body)
+    upd = api("PUT", f"/api/v1/publish/{slug}", body, extra=ws_headers)
     upload = upd["upload"]
     version_id = upload["versionId"]
     print(f"version {version_id}: upload={len(upload['uploads'])} skipped={len(upload['skipped'])}")
@@ -81,14 +88,30 @@ def main() -> None:
         if code != 200:
             sys.exit(f"upload failed for {name} (HTTP {code}); NOT finalizing")
 
+    # Finalize: org context first (org-owned site); on 403 retry with bare auth.
     body = json.dumps({"versionId": version_id}).encode()
+    fin_attempts = [
+        {"Authorization": f"Bearer {token()}", "X-HereNow-Account": org,
+         "Content-Type": "application/json"},
+        {"Authorization": f"Bearer {token()}", "Content-Type": "application/json"},
+    ]
     for attempt in range(5):
         try:
-            with req("POST", upload["finalizeUrl"], headers=headers, data=body,
+            with req("POST", upload["finalizeUrl"], headers=fin_attempts[0], data=body,
                      timeout=120) as resp:
                 fin = json.loads(resp.read().decode())
             print(f"finalized: {json.dumps(fin)}")
             return
+        except urllib.error.HTTPError as e:
+            if e.code == 403 and attempt == 0:
+                print("finalize 403 with org header; retrying without it")
+                with req("POST", upload["finalizeUrl"], headers=fin_attempts[1], data=body,
+                         timeout=120) as resp:
+                    fin = json.loads(resp.read().decode())
+                print(f"finalized: {json.dumps(fin)}")
+                return
+            print(f"finalize attempt {attempt + 1} failed: {e}; retrying in 20s")
+            time.sleep(20)
         except Exception as e:  # noqa: BLE001 - finalize timeouts are known-flaky
             print(f"finalize attempt {attempt + 1} failed: {e}; retrying in 20s")
             time.sleep(20)
