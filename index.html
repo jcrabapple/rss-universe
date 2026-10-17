@@ -151,6 +151,7 @@
   .whatsnew-head { display: flex; align-items: baseline; gap: .8rem; margin-bottom: .9rem; }
   .whatsnew-head h2 { font-size: 1.25rem; letter-spacing: -.01em; }
   .whatsnew-head .blurb { color: var(--ink-soft); font-size: .85rem; margin-left: auto; text-align: right; }
+  .whatsnew-head .blurb-short { display: none; }
   .wn-chip {
     display: inline-flex; align-items: center; gap: .35rem;
     background: var(--accent-soft); color: var(--accent-deep);
@@ -246,6 +247,13 @@
     .grid { grid-template-columns: 1fr; }
     .topbar-inner { gap: .55rem; padding: .6rem 1rem; }
     .brand { font-size: .95rem; }
+    .whatsnew-head { flex-wrap: wrap; }
+    .whatsnew-head .blurb {
+      margin-left: 0; width: 100%; text-align: left;
+      flex: none; order: 3; margin-top: .3rem;
+    }
+    .whatsnew-head .blurb-full { display: none; }
+    .whatsnew-head .blurb-short { display: inline; white-space: nowrap; }
     .hero { padding-top: 3rem; }
   }
 </style>
@@ -304,7 +312,7 @@
   <div class="whatsnew-head">
     <span class="wn-chip">New</span>
     <h2 class="serif">What's new</h2>
-    <span class="blurb">1 addition in the Oct 16, 2026 update — click through to the full entry.</span>
+    <span class="blurb"><span class="blurb-full">1 addition in the Oct 16, 2026 update — click through to the full entry.</span><span class="blurb-short">1 addition &middot; Oct 16, 2026</span></span>
   </div>
   <div class="wn-grid">
     <a class="wn-card" href="#fn-serenereader"><b>SereneReader</b><span class="wn-cat">Calm, focused reader</span><span class="wn-date">Oct 16</span></a>
