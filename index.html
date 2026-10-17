@@ -71,12 +71,48 @@
   }
   .brand { display: flex; align-items: center; gap: .55rem; font-weight: 700; font-size: 1.02rem; letter-spacing: .01em; }
   .brand svg { width: 24px; height: 24px; }
-  nav.topnav { display: flex; flex-wrap: wrap; gap: .15rem .35rem; margin-left: auto; }
-  nav.topnav a {
-    color: var(--ink-soft); text-decoration: none; font-size: .82rem;
-    padding: .3rem .6rem; border-radius: 999px; transition: background .15s, color .15s;
+  nav.topnav { display: flex; align-items: center; margin-left: auto; }
+  .navmenu { position: relative; }
+  .navmenu > summary {
+    list-style: none; cursor: pointer; user-select: none;
+    display: inline-flex; align-items: center; gap: .4rem;
+    color: var(--ink-soft); font-size: .82rem; font-weight: 600;
+    padding: .32rem .7rem; border-radius: 999px;
+    border: 1px solid var(--line);
+    transition: background .15s, color .15s, border-color .15s;
   }
-  nav.topnav a:hover { color: var(--accent); background: var(--accent-soft); }
+  .navmenu > summary::-webkit-details-marker { display: none; }
+  .navmenu > summary:hover,
+  .navmenu[open] > summary {
+    color: var(--accent); background: var(--accent-soft);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .navmenu > summary::after {
+    content: ""; width: 0; height: 0; margin-top: 1px;
+    border-left: 4px solid transparent; border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    transition: transform .18s ease;
+  }
+  .navmenu[open] > summary::after { transform: rotate(180deg); }
+  .navmenu-panel {
+    position: absolute; top: calc(100% + .6rem); right: 0; z-index: 60;
+    min-width: 272px; max-width: min(90vw, 340px);
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; box-shadow: var(--shadow);
+    padding: .5rem; display: flex; flex-direction: column; gap: .05rem;
+  }
+  .navmenu-panel a {
+    display: flex; align-items: baseline; gap: .6rem;
+    color: var(--ink-soft); text-decoration: none; font-size: .87rem;
+    padding: .45rem .65rem; border-radius: 9px;
+    transition: background .15s, color .15s;
+  }
+  .navmenu-panel a:hover { color: var(--accent); background: var(--accent-soft); }
+  .navmenu-panel .mn-num {
+    font-family: Georgia, serif; font-style: italic;
+    color: var(--accent); font-size: .82rem; min-width: 1.4rem;
+    font-variant-numeric: tabular-nums;
+  }
   .theme-toggle {
     background: none; border: 1px solid var(--line); color: var(--ink-soft);
     border-radius: 999px; padding: .3rem .7rem; font-size: .82rem; cursor: pointer;
@@ -208,7 +244,8 @@
     .sec-head { flex-wrap: wrap; }
     .sec-head .blurb { margin-left: 0; text-align: left; max-width: none; }
     .grid { grid-template-columns: 1fr; }
-    nav.topnav { margin-left: 0; width: 100%; order: 3; }
+    .topbar-inner { gap: .55rem; padding: .6rem 1rem; }
+    .brand { font-size: .95rem; }
     .hero { padding-top: 3rem; }
   }
 </style>
@@ -226,20 +263,25 @@
       </svg>
       The RSS Universe
     </div>
-    <nav class="topnav" aria-label="Sections">
-      <a href="#web">Web readers</a>
-      <a href="#selfhost">Self-hosted</a>
-      <a href="#desktop">Desktop &amp; mobile</a>
-      <a href="#podcast">Podcasts</a>
-      <a href="#generate">Generation</a>
-      <a href="#monitor">Monitoring</a>
-      <a href="#social">Social</a>
-      <a href="#discover">Discovery</a>
-      <a href="#standards">Standards</a>
-      <a href="#dev">Dev tools</a>
-      <a href="#extensions">Extensions</a>
-      <a href="#lists">Lists</a>
-      <a href="#readlater">Read-later</a>
+    <nav class="topnav" aria-label="Categories">
+      <details class="navmenu" id="catMenu">
+        <summary>Categories</summary>
+        <div class="navmenu-panel">
+          <a href="#web"><span class="mn-num">01</span>Web &amp; hosted readers</a>
+          <a href="#selfhost"><span class="mn-num">02</span>Self-hosted readers</a>
+          <a href="#desktop"><span class="mn-num">03</span>Desktop &amp; mobile readers</a>
+          <a href="#podcast"><span class="mn-num">04</span>Podcast readers</a>
+          <a href="#generate"><span class="mn-num">05</span>Feed generation &amp; conversion</a>
+          <a href="#monitor"><span class="mn-num">06</span>Monitoring &amp; alerts</a>
+          <a href="#social"><span class="mn-num">07</span>Social cross-posting</a>
+          <a href="#discover"><span class="mn-num">08</span>Search &amp; discovery</a>
+          <a href="#standards"><span class="mn-num">09</span>Standards &amp; formats</a>
+          <a href="#dev"><span class="mn-num">10</span>Libraries, APIs &amp; dev tools</a>
+          <a href="#extensions"><span class="mn-num">11</span>Browser extensions</a>
+          <a href="#lists"><span class="mn-num">12</span>Curated lists &amp; directories</a>
+          <a href="#readlater"><span class="mn-num">13</span>Read-it-later</a>
+        </div>
+      </details>
     </nav>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">Dark</button>
   </div>
@@ -499,6 +541,26 @@
       if (dark) root.removeAttribute('data-theme'); else root.setAttribute('data-theme', 'dark');
       try { localStorage.setItem('rss-theme', dark ? 'light' : 'dark'); } catch (e) {}
       label();
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    var m = document.getElementById('catMenu');
+    if (!m) return;
+    m.addEventListener('click', function (e) {
+      if (e.target.closest('a')) m.removeAttribute('open');
+    });
+    document.addEventListener('click', function (e) {
+      if (m.open && !m.contains(e.target)) m.removeAttribute('open');
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && m.open) {
+        m.removeAttribute('open');
+        var s = m.querySelector('summary');
+        if (s) s.focus();
+      }
     });
   })();
 </script>
