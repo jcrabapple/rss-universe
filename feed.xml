@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 29 Sep 2026 13:11:06 -0400</lastBuildDate>
+<lastBuildDate>Fri, 16 Oct 2026 21:45:40 -0400</lastBuildDate>
+<item>
+<title>Added: SereneReader.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: SereneReader&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add SereneReader: calm, focused web reader&lt;/p&gt;</description>
+<pubDate>Fri, 16 Oct 2026 21:45:40 -0400</pubDate>
+<guid isPermaLink="false">37b1ceca4acb7bef2a3fe2f9da8723cb8c1d0221</guid>
+</item>
 <item>
 <title>Added: MastoFeed, RSS Parrot.</title>
 <link>https://toolbox.rss.here.now/</link>
