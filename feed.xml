@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 19 Oct 2026 13:05:23 -0400</lastBuildDate>
+<lastBuildDate>Mon, 19 Oct 2026 13:18:31 -0400</lastBuildDate>
+<item>
+<title>Added 12 links.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added 12 links&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add 12 issue-suggested entries: Leed, Nextcloud News, Salut, News Explorer, ReadKit, Akregator, Reader Ultra, Sikio, feed-repeat, feed-mixer, Feed Canary, Feed Key&lt;/p&gt;</description>
+<pubDate>Mon, 19 Oct 2026 13:18:31 -0400</pubDate>
+<guid isPermaLink="false">b0cd3461b42121fd5330c419a88f4236768b6c14</guid>
+</item>
 <item>
 <title>Added: FeedCity, Micro.blog.</title>
 <link>https://toolbox.rss.here.now/</link>
