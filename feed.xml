@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 19 Oct 2026 13:18:31 -0400</lastBuildDate>
+<lastBuildDate>Mon, 19 Oct 2026 13:21:02 -0400</lastBuildDate>
+<item>
+<title>Added: Feedlynx.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: Feedlynx&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add Feedlynx: read-later that publishes an Atom feed of saved links&lt;/p&gt;</description>
+<pubDate>Mon, 19 Oct 2026 13:21:02 -0400</pubDate>
+<guid isPermaLink="false">d1b64c065224ad501dfb5e6b4b1b5651e12630ba</guid>
+</item>
 <item>
 <title>Added 12 links.</title>
 <link>https://toolbox.rss.here.now/</link>
