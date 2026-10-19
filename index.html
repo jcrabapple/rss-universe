@@ -254,6 +254,12 @@
     }
     .whatsnew-head .blurb-full { display: none; }
     .whatsnew-head .blurb-short { display: inline; white-space: nowrap; }
+    /* A long update batch would otherwise stack into a column and push the
+       whole directory ~2000px down. Two tight columns keep it scannable. */
+    .wn-grid { grid-template-columns: repeat(2, 1fr); gap: .45rem; }
+    a.wn-card { padding: .5rem .6rem; }
+    a.wn-card b { font-size: .88rem; }
+    a.wn-card .wn-cat { font-size: .74rem; }
     .hero { padding-top: 3rem; }
   }
 </style>
