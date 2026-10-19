@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 19 Oct 2026 13:21:02 -0400</lastBuildDate>
+<lastBuildDate>Mon, 19 Oct 2026 14:02:19 -0400</lastBuildDate>
+<item>
+<title>Added: RSS Guard.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: RSS Guard&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add RSS Guard: Qt desktop reader, podcast player, XMPP and Gemini client&lt;/p&gt;</description>
+<pubDate>Mon, 19 Oct 2026 14:02:19 -0400</pubDate>
+<guid isPermaLink="false">7296df818cce6dd871e2dbf510ba8a7442d53a6d</guid>
+</item>
 <item>
 <title>Added: Feedlynx.</title>
 <link>https://toolbox.rss.here.now/</link>
