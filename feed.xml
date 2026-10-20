@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 20 Oct 2026 11:35:09 -0400</lastBuildDate>
+<lastBuildDate>Tue, 20 Oct 2026 16:02:19 -0400</lastBuildDate>
+<item>
+<title>Added: Mastodon Bookmark RSS.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: Mastodon Bookmark RSS&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add Mastodon Bookmark RSS (reader suggestion)&lt;/p&gt;</description>
+<pubDate>Tue, 20 Oct 2026 16:02:19 -0400</pubDate>
+<guid isPermaLink="false">eb0f53201156c7b76e1b648bdf4c23277e8fcb29</guid>
+</item>
 <item>
 <title>Added: Feeddi, Feeder, Stream.</title>
 <link>https://toolbox.rss.here.now/</link>
