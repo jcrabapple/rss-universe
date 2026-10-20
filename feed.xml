@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 20 Oct 2026 16:14:09 -0400</lastBuildDate>
+<lastBuildDate>Tue, 20 Oct 2026 16:16:42 -0400</lastBuildDate>
+<item>
+<title>Added: Fedi.Tips: RSS on Mastodon, Friendica.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: Fedi.Tips: RSS on Mastodon, Friendica&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add Fedi.Tips RSS guide and Friendica to the fediverse section&lt;/p&gt;</description>
+<pubDate>Tue, 20 Oct 2026 16:16:42 -0400</pubDate>
+<guid isPermaLink="false">d2c6d1090fa4445a2d0372374c7fd6c2290fe31b</guid>
+</item>
 <item>
 <title>Added: Bridgy Fed, Mastodon built-in feeds.</title>
 <link>https://toolbox.rss.here.now/</link>
