@@ -294,6 +294,7 @@
           <a href="#extensions"><span class="mn-num">11</span>Browser extensions</a>
           <a href="#lists"><span class="mn-num">12</span>Curated lists &amp; directories</a>
           <a href="#readlater"><span class="mn-num">13</span>Read-it-later</a>
+          <a href="#fediverse"><span class="mn-num">14</span>Mastodon &amp; fediverse</a>
         </div>
       </details>
     </nav>
@@ -306,8 +307,8 @@
   <h1 class="serif">RSS isn't dead. It's the <em>resistance</em>.</h1>
   <p class="lede">No algorithm, no timeline, no engagement bait. Just feeds you chose. Here's the whole ecosystem — readers, feed generators, monitoring, directories, and the standards that hold it together.</p>
   <div class="hero-stats">
-    <div class="stat"><b>127</b><span>apps &amp; tools</span></div>
-    <div class="stat"><b>13</b><span>categories</span></div>
+    <div class="stat"><b>129</b><span>apps &amp; tools</span></div>
+    <div class="stat"><b>14</b><span>categories</span></div>
     <div class="stat"><b>100%</b><span>links verified live</span></div>
   </div>
 </header>
@@ -318,13 +319,15 @@
   <div class="whatsnew-head">
     <span class="wn-chip">New</span>
     <h2 class="serif">What's new</h2>
-    <span class="blurb"><span class="blurb-full">4 additions in the Oct 20, 2026 update — click through to the full entry.</span><span class="blurb-short">4 additions &middot; Oct 20, 2026</span></span>
+    <span class="blurb"><span class="blurb-full">6 additions in the Oct 20, 2026 update — click through to the full entry.</span><span class="blurb-short">6 additions &middot; Oct 20, 2026</span></span>
   </div>
   <div class="wn-grid">
     <a class="wn-card" href="#fn-stream"><b>Stream</b><span class="wn-cat">iOS timeline reader</span><span class="wn-date">Oct 20</span></a>
     <a class="wn-card" href="#fn-feeder"><b>Feeder</b><span class="wn-cat">Android, no account</span><span class="wn-date">Oct 20</span></a>
     <a class="wn-card" href="#fn-feeddi"><b>Feeddi</b><span class="wn-cat">Google Reader-style, free</span><span class="wn-date">Oct 20</span></a>
     <a class="wn-card" href="#fn-mastodon-bookmark-rss"><b>Mastodon Bookmark RSS</b><span class="wn-cat">Bookmarks as a feed</span><span class="wn-date">Oct 20</span></a>
+    <a class="wn-card" href="#fn-mastodon-feeds"><b>Mastodon built-in feeds</b><span class="wn-cat">Every profile and tag</span><span class="wn-date">Oct 20</span></a>
+    <a class="wn-card" href="#fn-bridgy-fed"><b>Bridgy Fed</b><span class="wn-cat">Web, fediverse, Bluesky</span><span class="wn-date">Oct 20</span></a>
   </div>
 </section>
 
@@ -535,6 +538,23 @@
     </div>
   </section>
 
+  <section id="fediverse">
+    <div class="sec-head"><span class="sec-num">14</span><h2 class="serif">Mastodon &amp; fediverse</h2><span class="blurb">Feeds in and out of Mastodon. Most entries are cross-listed from their home category.</span></div>
+    <div class="grid">
+      <article class="card" id="fn-mastodon-feeds"><div class="card-head"><h3><a href="https://docs.joinmastodon.org/user/network/#syndication" target="_blank" rel="noopener">Mastodon built-in feeds</a></h3><div class="card-meta"><span class="chip free">built in</span></div></div><p>Every Mastodon account and tag page already publishes an RSS feed, auto-discoverable from the page: add .rss to a profile URL (dmv.community/@name.rss) or a tag URL (dmv.community/tags/rss.rss) and any reader can follow it. No account, token or third-party service needed.</p><span class="url">docs.joinmastodon.org/user/network</span></article>
+      <article class="card" data-dup="1"><div class="card-head"><h3><a href="https://bookmark-rss.woodland.cafe/" target="_blank" rel="noopener">Mastodon Bookmark RSS</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Turns your Mastodon bookmarks into an RSS feed your reader can subscribe to. Stateless: it stores nothing, and the credentials ride inside the secret feed URL. MIT-licensed, so anyone can run their own copy; the hosted instance is free.</p><span class="url">bookmark-rss.woodland.cafe</span></article>
+      <article class="card" id="fn-bridgy-fed"><div class="card-head"><h3><a href="https://fed.brid.gy/" target="_blank" rel="noopener">Bridgy Fed</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Bridge between the fediverse, the open web and Bluesky: a personal site with a feed shows up as a followable fediverse account, and bridged accounts get timeline feeds in Atom and other formats. CC0-licensed code, run as a free service.</p><span class="url">fed.brid.gy</span></article>
+      <article class="card" data-dup="1"><div class="card-head"><h3><a href="https://mastofeed.org/" target="_blank" rel="noopener">MastoFeed</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free</span></div></div><p>Hosted pipe from RSS or Atom straight into a Mastodon account via OAuth: connect, add a feed, every new item posts itself.</p><span class="url">mastofeed.org</span></article>
+      <article class="card" data-dup="1"><div class="card-head"><h3><a href="https://rss-parrot.net/" target="_blank" rel="noopener">RSS Parrot</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free</span></div></div><p>Reverse direction: mention @birb@rss-parrot.net with any site, Substack, podcast or Bluesky profile and it spawns a Mastodon account that toots each new post.</p><span class="url">rss-parrot.net</span></article>
+      <article class="card" data-dup="1"><div class="card-head"><h3><a href="https://github.com/jcrabapple/feedecho" target="_blank" rel="noopener">FeedEcho</a></h3><div class="card-meta"><span class="chip os">open source</span><span class="chip free">free</span></div></div><p>Self-hosted cross-poster: watches RSS, Atom or JSON feeds and echoes new items to Mastodon, Bluesky, micro.blog or email — Jinja2 templates, keyword filters, drip pacing, Docker.</p><span class="url">github.com/jcrabapple/feedecho</span></article>
+      <article class="card" data-dup="1"><div class="card-head"><h3><a href="https://feedecho.net/" target="_blank" rel="noopener">FeedEcho Hosted</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip paid">paid</span></div></div><p>The same engine as a managed service at feedecho.net — invite-only beta, 14-day free trial. Feeds post to social or inbox on autopilot, with alt-text generation and digest mode.</p><span class="url">feedecho.net</span></article>
+      <article class="card" data-dup="1"><div class="card-head"><h3><a href="https://micro.blog/" target="_blank" rel="noopener">Micro.blog</a></h3><div class="card-meta"><span class="chip saas">SaaS</span><span class="chip free">free tier</span></div></div><p>POSSE platform: post at your own domain and it syndicates everywhere — Mastodon, Bluesky, Threads, Tumblr, Nostr and more — with ActivityPub and an RSS feed for every post. Also serves photo blogs, newsletters and native apps, and bundles the Inkwell feed reader. $5/month to host your domain; free account if you blog elsewhere.</p><span class="url">micro.blog</span></article>
+      <article class="card" data-dup="1"><div class="card-head"><h3><a href="https://reederapp.com/" target="_blank" rel="noopener">Reeder</a></h3><div class="card-meta"><span class="chip paid">paid</span></div></div><p>The design benchmark on Mac/iOS. The new timeline-style app mixes RSS with podcasts, YouTube, Mastodon and Bluesky in one stream.</p><span class="url">reederapp.com</span></article>
+      <article class="card" data-dup="1"><div class="card-head"><h3><a href="https://tapestry.iconfactory.com/" target="_blank" rel="noopener">Tapestry</a></h3><div class="card-meta"><span class="chip free">freemium</span></div></div><p>The Iconfactory's universal Apple app: a unified chronological timeline fed by connectors for RSS, Atom, JSON Feed, Mastodon, Bluesky, Tumblr, YouTube, Reddit and podcasts — plus third-party connectors, muffle/mute rules, and iCloud position sync. Free; Premium is $1.99/mo, $19.99/yr or $79.99 lifetime.</p><span class="url">tapestry.iconfactory.com</span></article>
+      <article class="card" data-dup="1"><div class="card-head"><h3><a href="https://betamagic.nl/products/newsexplorer.html" target="_blank" rel="noopener">News Explorer</a></h3><div class="card-meta"><span class="chip paid">paid</span></div></div><p>Dutch-developed Apple reader covering every platform — iPhone, iPad, Mac, Watch and TV — synced over iCloud with no account to sign up for. Pulls RSS, Atom, JSON, Mastodon, Reddit, YouTube and podcasts, then does full-text extraction, article comments, smart filters, prefilters and rich notes. $4.99 on iOS, $9.99 on macOS, no subscription.</p><span class="url">betamagic.nl/products/newsexplorer.html</span></article>
+    </div>
+  </section>
+
   <aside class="callout">
     <h2 class="serif">Switching readers? It's painless.</h2>
     <p>Every serious reader imports and exports <code>OPML</code> — the one file format that carries all your subscriptions. Export from your current app, import into the next, done in under a minute. Don't let sunk cost keep you in a reader you don't like.</p>
@@ -557,7 +577,7 @@
       <circle cx="6.4" cy="17.6" r="1.6" fill="#e8590c"/>
     </svg>
   </div>
-  <p>The RSS Universe — 127 apps, tools and standards, every link checked live on October 20, 2026.</p>
+  <p>The RSS Universe — 129 apps, tools and standards, every link checked live on October 20, 2026.</p>
   <p>RSS is the oldest social network that never sold your data.</p>
   <p><a href="https://github.com/jcrabapple/rss-universe/issues/new" target="_blank" rel="noopener">Suggest a link on GitHub</a> · <a href="/feed.xml" type="application/rss+xml">Changelog feed</a></p>
 </footer>

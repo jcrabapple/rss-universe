@@ -20,7 +20,7 @@ SITE_URL = "https://toolbox.rss.here.now"
 MAX_ITEMS = 50
 
 CARD_NAME = re.compile(
-    r'<article class="card"[^>]*>.*?<h3><a href="[^"]*"[^>]*>([^<]+)</a></h3>'
+    r'<article class="card"(?![^>]*data-dup)[^>]*>.*?<h3><a href="[^"]*"[^>]*>([^<]+)</a></h3>'
 )
 
 
