@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Tue, 20 Oct 2026 16:02:19 -0400</lastBuildDate>
+<lastBuildDate>Tue, 20 Oct 2026 16:14:09 -0400</lastBuildDate>
+<item>
+<title>Added: Bridgy Fed, Mastodon built-in feeds.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: Bridgy Fed, Mastodon built-in feeds&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add Mastodon and fediverse section (14): cross-list 9 cards, add Mastodon built-in feeds and Bridgy Fed&lt;/p&gt;</description>
+<pubDate>Tue, 20 Oct 2026 16:14:09 -0400</pubDate>
+<guid isPermaLink="false">539a0f7c509b3b06c3a8fee2fd2e9f55e68de03f</guid>
+</item>
 <item>
 <title>Added: Mastodon Bookmark RSS.</title>
 <link>https://toolbox.rss.here.now/</link>
