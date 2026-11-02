@@ -6,7 +6,21 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Fri, 23 Oct 2026 13:19:10 -0400</lastBuildDate>
+<lastBuildDate>Mon, 02 Nov 2026 08:24:41 -0500</lastBuildDate>
+<item>
+<title>Added: ByeDoom.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: ByeDoom&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add ByeDoom (feed generation, issue #31); new What's New batch&lt;/p&gt;</description>
+<pubDate>Mon, 02 Nov 2026 08:24:41 -0500</pubDate>
+<guid isPermaLink="false">2747249652d6d8e2730c3b33ea2f3fb13e5bff56</guid>
+</item>
+<item>
+<title>Removed: Feedbro.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Removed: Feedbro&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Remove Feedbro (Chrome Web Store delisted the MV2 build; Edge flagged it; no release since 2024) — issue #32&lt;/p&gt;</description>
+<pubDate>Mon, 02 Nov 2026 08:24:33 -0500</pubDate>
+<guid isPermaLink="false">9ffb8d30e288dc539eebeee6b5515c36722dfd5e</guid>
+</item>
 <item>
 <title>Added: Slow Feeds, Want My RSS.</title>
 <link>https://toolbox.rss.here.now/</link>
