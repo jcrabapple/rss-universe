@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 02 Nov 2026 08:24:41 -0500</lastBuildDate>
+<lastBuildDate>Tue, 17 Nov 2026 13:02:01 -0500</lastBuildDate>
+<item>
+<title>Added: Brew RSS Collections.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: Brew RSS Collections&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add Brew RSS Collections (curated lists, issue #34); What's New batch&lt;/p&gt;</description>
+<pubDate>Tue, 17 Nov 2026 13:02:01 -0500</pubDate>
+<guid isPermaLink="false">72a9fb3c5c1192dc6980110c9042716c491f8422</guid>
+</item>
 <item>
 <title>Added: ByeDoom.</title>
 <link>https://toolbox.rss.here.now/</link>
