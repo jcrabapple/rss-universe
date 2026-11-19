@@ -6,7 +6,7 @@ Live at: **https://toolbox.rss.here.now/**
 
 ## What's inside
 
-A single self-contained `index.html` — no build step, no dependencies, no external assets. Warm cream-and-orange editorial theme with a dark mode toggle (preference persisted in `localStorage`).
+A single self-contained `index.html` — no build step, no dependencies, no external assets. Independent field-guide styling with embedded Fira fonts, ruled directory rows, a sticky contents index, and a dark mode toggle (preference persisted in `localStorage`). Font licenses are included in `FONT-LICENSES.txt`.
 
 - **135 apps & tools** across 14 categories: web/hosted readers, self-hosted readers, desktop & mobile readers, podcast readers, feed generation, monitoring & alerts, social cross-posting, search & discovery, standards & formats, dev libraries, browser extensions, curated lists, read-it-later, and a Mastodon/fediverse section (cross-listed from the other categories)
 - All external links open in new tabs
