@@ -17,6 +17,7 @@ Fira Sans handles body copy and interface text. Fira Sans Condensed handles the 
 - Compact utility bar with brand, update date, contents control on mobile, and theme control.
 - Two-column cover on desktop with a direct headline and one RSS mark. The mark is omitted on mobile to prioritize the directory.
 - Inline directory facts rather than metric boxes.
+- What’s New is the first directory section and the first Contents destination. Desktop update entries use compact 230–340px tracks rather than stretching across the content column; it does not change the count of 14 tool categories.
 - Sticky contents rail beside the directory at widths above 820px.
 - Native popover contents sheet at widths up to 820px, with explicit close, link dismissal, outside-click dismissal, and Escape support.
 - Two-column entry rows on desktop: name and metadata, then description and domain. Single-column rows on mobile.

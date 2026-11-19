@@ -283,20 +283,10 @@ svg { display: block; }
 }
 
 /* Latest additions */
-.whatsnew { max-width: 1320px; margin: 0 auto; padding: 0 2rem 2.5rem; }
-.whatsnew-head {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding-bottom: 0.55rem;
-  border-bottom: 1px solid var(--ink);
-}
-.whatsnew-head h2 { font-size: 1.55rem; line-height: 1; }
-.whatsnew-head .blurb { margin-left: auto; color: var(--ink-soft); font-size: 0.8rem; text-align: right; }
 .whatsnew-head .blurb-short, .wn-chip { display: none; }
 .wn-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 340px));
   column-gap: 2rem;
 }
 a.wn-card {
@@ -494,12 +484,12 @@ footer a:hover { color: var(--accent-deep); }
   .stat b { font-size: 0.95rem; }
   .stat span { font-size: 0.75rem; }
   .hero-updated { display: block; font-size: 0.75rem; }
-  .whatsnew { padding: 0 1rem 2rem; }
   .whatsnew-head { flex-wrap: wrap; gap: 0.35rem; }
   .whatsnew-head .blurb { width: 100%; margin-left: 0; text-align: left; }
   .whatsnew-head .blurb-full { display: none; }
   .whatsnew-head .blurb-short { display: inline; white-space: nowrap; }
   .wn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; }
+  .wn-grid:has(.wn-card:only-child) { grid-template-columns: minmax(0, 1fr); }
   a.wn-card { grid-template-columns: 1fr; }
   a.wn-card .wn-date { grid-column: 1; grid-row: 3; }
   .directory-layout { display: block; padding: 0 1rem 3rem; }
@@ -615,24 +605,13 @@ FINISH: Desktop/mobile inspection, accessibility and behavior checks, detector, 
   </div>
 </header>
 
-<!-- WHATSNEW: mini-cards for the most recent update. Each links to the full entry's id below.
-     On the next update: replace these cards with the new batch and drop ids off the old entries. -->
-<section class="whatsnew" id="whatsnew" aria-label="What's new">
-  <div class="whatsnew-head">
-    <h2 class="serif">What's new</h2>
-    <span class="blurb"><span class="blurb-full">1 addition in the Nov 19, 2026 update — click through to the full entry.</span><span class="blurb-short">1 addition &middot; Nov 19, 2026</span></span>
-  </div>
-  <div class="wn-grid">
-    <a class="wn-card" href="#fn-shows-stories"><b>Shows &amp; Stories</b><span class="wn-cat">Podcast readers</span><span class="wn-date">Nov 19</span></a>
-  </div>
-</section>
-
 <div class="directory-layout">
   <aside class="category-rail">
     <h2>Contents</h2>
     <nav aria-label="Directory categories">
       <ul class="category-list" id="categoryMenu" popover>
         <li class="popover-close"><button type="button" popovertarget="categoryMenu" popovertargetaction="hide">Close contents</button></li>
+        <li><a href="#whatsnew">What's new</a></li>
         <li><a href="#web">Web &amp; hosted readers</a></li>
         <li><a href="#selfhost">Self-hosted readers</a></li>
         <li><a href="#desktop">Desktop &amp; mobile readers</a></li>
@@ -653,6 +632,18 @@ FINISH: Desktop/mobile inspection, accessibility and behavior checks, detector, 
   </aside>
 
 <main>
+
+<!-- WHATSNEW: mini-cards for the most recent update. Each links to the full entry's id below.
+     On the next update: replace these cards with the new batch and drop ids off the old entries. -->
+  <section class="whatsnew" id="whatsnew" aria-label="What's new">
+    <div class="sec-head whatsnew-head">
+      <h2 class="serif">What's new</h2>
+      <span class="blurb"><span class="blurb-full">1 addition in the Nov 19, 2026 update — click through to the full entry.</span><span class="blurb-short">1 addition &middot; Nov 19, 2026</span></span>
+    </div>
+    <div class="wn-grid">
+      <a class="wn-card" href="#fn-shows-stories"><b>Shows &amp; Stories</b><span class="wn-cat">Podcast readers</span><span class="wn-date">Nov 19</span></a>
+    </div>
+  </section>
 
   <section id="web">
     <div class="sec-head"><span class="sec-num">01</span><h2 class="serif">Web &amp; hosted readers</h2><span class="blurb">Nothing to install — read in the browser, sync everywhere.</span></div>
