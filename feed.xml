@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Mon, 23 Nov 2026 13:27:38 -0500</lastBuildDate>
+<lastBuildDate>Tue, 24 Nov 2026 23:34:08 -0500</lastBuildDate>
+<item>
+<title>Added: MyFeed.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: MyFeed&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add MyFeed web reader to web &amp;amp; hosted readers (issue #35)&lt;/p&gt;</description>
+<pubDate>Tue, 24 Nov 2026 23:34:08 -0500</pubDate>
+<guid isPermaLink="false">cee0649a5154059c7846f739dcae337b290d5e4e</guid>
+</item>
 <item>
 <title>Added: snugrss.</title>
 <link>https://toolbox.rss.here.now/</link>
