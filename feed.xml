@@ -6,7 +6,14 @@
 <description>New apps, tools, and standards added to the RSS Universe directory.</description>
 <language>en</language>
 <atom:link href="https://toolbox.rss.here.now/feed.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>Wed, 25 Nov 2026 13:04:04 -0500</lastBuildDate>
+<lastBuildDate>Thu, 26 Nov 2026 13:04:25 -0500</lastBuildDate>
+<item>
+<title>Added: RecapOne.</title>
+<link>https://toolbox.rss.here.now/</link>
+<description>&lt;p&gt;Added: RecapOne&lt;/p&gt;&lt;p&gt;&lt;a href="https://toolbox.rss.here.now/"&gt;The RSS Universe&lt;/a&gt; — Add RecapOne to web &amp;amp; hosted readers (issue #38)&lt;/p&gt;</description>
+<pubDate>Thu, 26 Nov 2026 13:04:25 -0500</pubDate>
+<guid isPermaLink="false">4b81b2b108ef75c3da452a676ea8bf71b7c990d0</guid>
+</item>
 <item>
 <title>Added: MyNewsroom.</title>
 <link>https://toolbox.rss.here.now/</link>
